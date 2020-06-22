@@ -43,14 +43,6 @@ public class SearchUserTests {
         response = searchUserService.getResponse(USER, SEARCH_USERS);
         retrievedUsers = searchUserService.getBodyOfRequest(response);
 
-        assertEquals(USER, retrievedUsers.getItems().get(0).getLogin());
-    }
-
-    @Test
-    public void gravatarDeveRetornarVazio() {
-        response = searchUserService.getResponse(USER, SEARCH_USERS);
-        retrievedUsers = searchUserService.getBodyOfRequest(response);
-
-        assertNull(retrievedUsers.getItems().get(0).getGravatarId());
+        searchUserService.ValidatePropertyLogin(USER, retrievedUsers);
     }
 }

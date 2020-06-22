@@ -8,6 +8,7 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import utils.Utils;
 
 import java.util.ArrayList;
@@ -81,5 +82,9 @@ public class SearchUserService {
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .build();
+    }
+
+    public void ValidatePropertyLogin(String user, ListOfUsers retrievedUsers) {
+        Assert.assertEquals(user, retrievedUsers.getItems().get(0).getLogin());
     }
 }
